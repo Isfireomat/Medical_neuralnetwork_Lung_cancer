@@ -1,0 +1,371 @@
+<!-- {% load static %} -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Data Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(180deg, #28289e 0%, #04df63 100%);
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        .container {
+            display: flex;
+        }
+        .left-section {
+            flex: 1;
+            background-color: hsla(45, 5%, 84%, 0.822);
+            padding: 20px;
+            border-radius: 8px 0 0 8px;
+        }
+        .right-section {
+            /* flex: 1; */
+            background-color: hsla(45, 5%, 84%, 0.822);
+            
+            border-radius: 0 8px 8px 0;
+        }
+        .pad {padding: 20px;}
+        h1 {
+            
+            text-align: center;
+            margin-bottom: 20px;
+            color: #5a67d8;
+        }
+        .form-group {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            flex: 1;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .form-group input[type="text"],
+        .form-group input[type="number"],
+        .form-group select {
+            flex: 1;
+            padding: 10px;
+            /* margin-bottom: 5px; */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .checkbox-group {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .checkbox-group label {
+            margin-left: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5a67d8;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #434190;
+        }
+        .form-group input[type="number"] {
+    width: 100px;
+}
+        .button-group {
+    display: flex;
+    justify-content: center; /* Центрируем кнопки */
+    margin-top: 20px;
+}
+
+.button-group button {
+    margin: 0 10px; /* Добавляем немного отступа между кнопками */
+}
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #form-container {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        padding: 20px;
+        border: 2px solid #000;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 9999;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        cursor: pointer;
+        width: 40px;
+        height: 40px; 
+        font-size: 40px; 
+    }
+    .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="form">
+    <h1 style="font-size:25px">Medical application of lung disease prediction using AI</h1>
+    <div class="container">    
+        
+        <div class="left-section">
+        
+            <h1>Health Data Input Form</h1>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" required>
+                    <option value="">Select a country</option>
+                    <option value="1">Angola</option>
+                    <option value="2">Brazil</option>
+                    <option value="3">Kenya</option>
+                    <option value="4">Congo</option>
+                    <option value="5">Lesotho</option>
+                    <option value="6">Cambodia</option>
+                    <option value="7">Ethiopia</option>
+                    <option value="8">DR Congo</option>
+                    <option value="9">Liberia</option>
+                    <option value="10">Namibia</option>
+                    <option value="11">Myanmar</option>
+                    <option value="12">Philippines</option>
+                    <option value="13">Sierra Leone</option>
+                    <option value="14">Zambia</option>
+                    <option value="15">Zimbabwe</option>
+                    <option value="16">Tanzania</option>
+                    <option value="17">Thailand</option>
+                    <option value="18">Mozambique</option>
+                    <option value="19">Pakistan</option>
+                    <option value="20">Papua New Guinea</option>
+                    <option value="21">Central African Republic</option>
+                </select>
+              
+            </div>
+        
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" min="1" max="120" value="1">
+            </div>
+            
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <select id="sex">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="smoking-years">Smoking, years</label>
+                <input type="number" id="smoking-years" min="0" max="120" value="0">
+            </div>
+        </div>
+        
+    
+        <div class="right-section">
+    
+            <div style="float: right;">
+                <button onclick="clearForm()">Clear</button>
+            </div>        
+                <div class="pad">    
+            <h1 >Health Factors</h1>
+            
+            <div class="form-group">
+                <label><input type="checkbox" id="harmful-environment"> Harmful environment</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="alcohol"> Alcohol</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="genetic-predisposition"> Genetic predisposition</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="covid"> Covid disease in the past or now</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="fluorography-result"> Fluorography result</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="other-cancers"> Cancer of other organs, another localization</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="relatives-cancer"> Cancer of first-line relatives</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="previous-lung-cancer"> Previously had lung cancer</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="chronic-lung-diseases"> Chronic lung diseases</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="ca-19-9"> CA 19-9 cancer marker</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="ca-72-4"> CA 72-4 cancer marker</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="cea"> Cancer embryonic antigen marker</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="scc"> Squamous Cell Carcinoma Antigen marker</label>
+            </div>
+
+            <div class="form-group">
+                <label><input type="checkbox" id="nse"> Neuron-specific enolase marker</label>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+    <div class="button-group">
+        <button onclick="submitForm()">Submit</button>
+    </div>
+    <div class="error" style="place-items: center; display: grid;">
+    <span id="error-message"  style=" display:none;">Please select a country.</span>
+    </div>
+</div>
+<div id="form-container" style="display: none;">
+    <span class="close-btn" onclick="closeForm()">×</span>
+    <h2 style="font-size: 20px;">The likelihood of lung cancer: </h2>
+    <h2 style="font-size: 100px;  display: flex;justify-content: right;">87%</h2>
+</div>
+<script>
+        function closeForm() {
+        document.getElementById("form-container").style.display = "none";
+    }
+    function submitForm() {
+        const age = document.getElementById('age').value;
+        const sex = document.getElementById('sex').value;
+        const smokingYears = document.getElementById('smoking-years').value;
+        const harmfulEnvironment = document.getElementById('harmful-environment').checked;
+        const alcohol = document.getElementById('alcohol').checked;
+        const geneticPredisposition = document.getElementById('genetic-predisposition').checked;
+        const covid = document.getElementById('covid').checked;
+        const fluorographyResult = document.getElementById('fluorography-result').checked;
+        const otherCancers = document.getElementById('other-cancers').checked;
+        const relativesCancer = document.getElementById('relatives-cancer').checked;
+        const previousLungCancer = document.getElementById('previous-lung-cancer').checked;
+        const chronicLungDiseases = document.getElementById('chronic-lung-diseases').checked;
+        const ca199 = document.getElementById('ca-19-9').checked;
+        const ca724 = document.getElementById('ca-72-4').checked;
+        const cea = document.getElementById('cea').checked;
+        const scc = document.getElementById('scc').checked;
+        const nse = document.getElementById('nse').checked;
+        const country = document.getElementById('country').value;
+        const errorMessage = document.getElementById('error-message');
+        if (country === "") {
+                errorMessage.style.display = 'inline';
+                
+            } else {
+                errorMessage.style.display = 'none';
+             
+        const formData = {
+        age: age,
+        sex: sex,
+        smokingYears: smokingYears,
+        harmfulEnvironment: harmfulEnvironment,
+        alcohol: alcohol,
+        geneticPredisposition: geneticPredisposition,
+        covid: covid,
+        fluorographyResult: fluorographyResult,
+        otherCancers: otherCancers,
+        relativesCancer: relativesCancer,
+        previousLungCancer: previousLungCancer,
+        chronicLungDiseases: chronicLungDiseases,
+        ca199: ca199,
+        ca724: ca724,
+        cea: cea,
+        scc: scc,
+        nse: nse,
+        country: country
+    
+    };
+
+    const jsonData = JSON.stringify(formData);
+    
+    fetch('api/AI/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: jsonData
+    }).then(response => response.json()) .then(data => {
+        const formContainer = document.getElementById('form-container');
+        formContainer.innerHTML = `
+          <span class="close-btn" onclick="closeForm()">×</span>
+          <h2 style="font-size: 20px;">The likelihood of lung cancer: </h2>
+          <h2 style="font-size: 100px;  display: flex;justify-content: right;">${data["predictions"]}%</h2>
+          `;
+      formContainer.style.display = 'block';
+        });
+
+    document.getElementById("form-container").style.display = "block";
+    }};
+    function clearForm() {
+    document.getElementById('age').value = '1';
+    document.getElementById('sex').value = 'male';
+    document.getElementById('smoking-years').value = '0';
+    document.getElementById('harmful-environment').checked = false;
+    document.getElementById('alcohol').checked = false;
+    document.getElementById('genetic-predisposition').checked = false;
+    document.getElementById('covid').checked = false;
+    document.getElementById('fluorography-result').checked = false;
+    document.getElementById('other-cancers').checked = false;
+    document.getElementById('relatives-cancer').checked = false;
+    document.getElementById('previous-lung-cancer').checked = false;
+    document.getElementById('chronic-lung-diseases').checked = false;
+    document.getElementById('ca-19-9').checked = false;
+    document.getElementById('ca-72-4').checked = false;
+    document.getElementById('cea').checked = false;
+    document.getElementById('scc').checked = false;
+    document.getElementById('nse').checked = false;
+    document.getElementById('country').value = '';
+}
+</script>
+</body>
+</html>
